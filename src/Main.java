@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new CEO(13134, "Helen", "McClair", 176000, LocalDate.of(1972, 8, 20), "BX832Z", 15000));
@@ -36,7 +37,41 @@ public class Main {
 
         Employee topSalesPerson = getTopSalesPerson(employees);
         System.out.println(topSalesPerson.getFirstName() + " " + topSalesPerson.getLastName());
+
+        printAllEmployees(employees);
+
+        Employee e1 = new SalesPerson(45432, "James", "Roberts", 20500, LocalDate.of(1991, 4, 25));
+        Employee e2 = new Manager(19093, "Larry", "Lucky", 85700, LocalDate.of(1983, 9, 30), "XB092P");
+
+        if (isEmployee(employees, e1))
+            System.out.println(e1.getFirstName() + " " + e1.getLastName() + " is an employee of the Widget Company");
+        else
+            System.out.println(e1.getFirstName() + " " + e1.getLastName() + " is NOT an employee of the Widget Company");
+
+        if (isEmployee(employees, e2))
+            System.out.println(e2.getFirstName() + " " + e2.getLastName() + " is an employee of the Widget Company");
+        else
+            System.out.println(e2.getFirstName() + " " + e2.getLastName() + " is NOT an employee of the Widget Company");
     }
+
+    private static boolean isEmployee(ArrayList<Employee> employees, Employee employee) {
+
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).equals(employee))
+                return true;
+        }
+
+        return false;
+    }
+
+
+    private static void printAllEmployees(ArrayList<Employee> employees) {
+
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+
 
     private static Employee getTopSalesPerson(ArrayList<Employee> employees) {
         SalesPerson top = null;

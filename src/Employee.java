@@ -35,4 +35,18 @@ public class Employee {
         return dateOfBirth;
     }
 
+    @Override
+    public String toString() {
+        return lastName.toUpperCase() + ", " + firstName + " - " + getClass().getName();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Employee) {
+            Employee employee = (Employee)obj;
+
+            return firstName.equals(employee.getFirstName()) && lastName.equals(employee.getLastName()) && dateOfBirth.equals(employee.getDateOfBirth());
+        }
+        return false;
+    }
 }
